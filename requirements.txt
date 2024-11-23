@@ -1,5 +1,5 @@
 torch==2.2.0
-torchvision==0.15.0
+torchvision==0.20.1
 pytorch-lightning==2.7.0
 torchmetrics==0.11.0
 pytorch-metric-learning==3.2.0
