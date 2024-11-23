@@ -162,7 +162,6 @@ keras-utils==1.0.13
 keyboard==0.13.5
 matplotlib==3.8.0
 matplotlib-inline==0.1.6
-mdurl==0.1.2
 mediapipe==0.10.8
 mkl==2021.4.0
 ml-dtypes==0.4.0
