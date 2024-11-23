@@ -245,7 +245,6 @@ python-resize-image==1.1.20
 python-slugify==8.0.1
 python-utils==3.8.1
 pytube==15.0.0
-pytubefix==6.16.2
 pywin32==306
 PyYAML==6.0.1
 pyzmq==25.1.1
