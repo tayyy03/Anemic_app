@@ -34,7 +34,6 @@ Brotli==1.1.0
 cachetools==5.3.2
 caikit==0.9.2
 catalogue==2.0.10
-catboost==1.2.2
 certifi==2023.7.22
 cffi==1.16.0
 chardet==4.0.0
