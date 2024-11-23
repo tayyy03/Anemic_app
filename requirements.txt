@@ -207,7 +207,6 @@ preshed==3.0.9
 proglog==0.1.10
 prometheus_client==0.20.0
 prompt-toolkit==3.0.39
-Protego==0.3.0
 pulsar-client==3.3.0
 pure-eval==0.2.2
 py-cpuinfo==9.0.0
