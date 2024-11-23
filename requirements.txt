@@ -290,7 +290,6 @@ srsly==2.4.8
 stack-data==0.6.3
 starlette==0.27.0
 sumy==0.11.0
-supervision==0.16.0
 svgwrite==1.4.3
 sympy==1.12
 tables==3.9.2
