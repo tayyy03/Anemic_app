@@ -1,37 +1,60 @@
 from flask import Flask, request, jsonify
-from PIL import Image
-import io
-import tensorflow as tf
+from flask_cors import CORS
+import os
+import numpy as np
+import cv2  # Pastikan OpenCV terinstal
+# Import model Anda di sini
+# from your_model import load_model, predict
 
 app = Flask(__name__)
+CORS(app)  # Mengizinkan CORS untuk semua domain (Anda dapat membatasi ini sesuai kebutuhan)
 
-# Muat model ML yang sudah Anda latih
-model = tf.keras.models.load_model("D:/upwork/anemia/cnn_model.h5")  # Ganti dengan path model Anda
-labels = ["No Anemia", "Anemia"]  # Label klasifikasi
+# Mengatur direktori untuk menyimpan gambar yang diunggah
+UPLOAD_FOLDER = 'uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-@app.route("/")
-def home():
-    return "Anemia Detection API is running!"
+@app.route('/predict', methods=['POST'])
+def predict():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
 
-@app.route("/detect-anemia", methods=["POST"])
-def detect_anemia():
-    if "image" not in request.files:
-        return jsonify({"error": "No image file found"}), 400
+    file = request.files['file']
 
-    file = request.files["image"]
-    try:
-        # Buka dan preproses gambar
-        image = Image.open(file.stream).convert("RGB").resize((224, 224))
-        image_array = tf.keras.utils.img_to_array(image) / 255.0  # Normalisasi
-        image_array = tf.expand_dims(image_array, axis=0)  # Tambahkan batch dimensi
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
 
-        # Inferensi menggunakan model
-        prediction = model.predict(image_array)
-        result = labels[int(tf.argmax(prediction, axis=1))]
+    # Simpan file yang diunggah
+    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(file_path)
 
-        return jsonify({"result": result}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    # Proses gambar dan lakukan prediksi
+    result = classify_image(file_path)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    # Hapus file setelah pemrosesan (opsional)
+    os.remove(file_path)
+
+    return jsonify({'result': result})
+
+def classify_image(image_path):
+    # Muat model Anda di sini
+    # model = load_model()
+
+    # Baca gambar
+    image = cv2.imread(image_path)
+
+    # Lakukan pra-pemrosesan yang diperlukan untuk model Anda
+    # Misalnya, ubah ukuran gambar, normalisasi, dll.
+    # image = preprocess_image(image)
+
+    # Lakukan prediksi
+    # prediction = model.predict(image)
+
+    # Contoh hasil prediksi (ganti dengan logika Anda)
+    # Jika model Anda mengembalikan probabilitas, Anda dapat menggunakan ambang batas untuk menentukan hasil
+    # return 'Anemia' if prediction[0] > 0.5 else 'No Anemia'
+    
+    # Untuk contoh, kita kembalikan hasil acak
+    return 'Anemia'  # Ganti dengan logika deteksi yang sebenarnya
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
