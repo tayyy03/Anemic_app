@@ -1,21 +1,21 @@
 flask==3.1.0
 gunicorn==23.0.0
-torch==2.0.1  # Compatible with torchvision 0.20.1
-torchvision==0.15.2  # Compatible with torch 2.0.1
-pytorch-lightning==2.0.6  # Matches torch and numpy compatibility
-torchmetrics==1.0.1  # Compatible with numpy >=1.20.0
-pytorch-metric-learning==1.6.2  # Matches torch and numpy compatibility
-scikit-learn==1.3.1  # Works with numpy 1.23.x
-scipy==1.11.3  # Matches numpy 1.23.x compatibility
-seaborn==0.12.2  # Works with numpy >=1.20
-opencv-python==4.8.1.78  # Matches numpy compatibility
-pillow==10.0.1  # Latest pillow version compatible with Python >=3.7
-numpy==1.23.5  # Compatible with all listed dependencies
-pandas==2.0.3  # Matches numpy >=1.20.0 compatibility
-matplotlib==3.7.2  # Compatible with numpy >=1.20
-tensorboard==2.13.0  # Matches tensorflow compatibility
-tensorflow==2.13.0  # Matches numpy and tensorboard compatibility
-tensorflow-hub==0.16.0  # Compatible with tensorflow 2.x
+torch==2.5.1
+torchvision==0.20.1
+pytorch-lightning==2.4.0
+torchmetrics==1.6.0
+pytorch-metric-learning==2.7.0
+scikit-learn==1.5.2
+scipy==1.14.1
+seaborn==0.13.2
+opencv-python==4.10.0.84
+pillow==11.0
+numpy==2.1.3
+pandas==2.2.3
+matplotlib==3.9.2
+tensorboard==2.18.0
+tensorflow==2.18.0
+tensorflow-hub==0.16.0
 requests==2.32.0
 pyyaml==6.0.2
 wandb==0.18.7
