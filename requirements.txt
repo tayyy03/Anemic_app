@@ -1,6 +1,6 @@
 flask==3.1.0
 Flask-Cors==5.0.0
 gunicorn==23.0.0
-tensorflow-cpu==2.18.0  # Versi CPU untuk mengurangi ukuran
+xgboost==2.1.2
 numpy==1.26.0
 opencv-python==4.10.0.84
